@@ -1,0 +1,1175 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jul 12, 2023 at 06:38 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `wismappsdm`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `name`, `email`, `password`, `photo`, `token`, `created_at`, `updated_at`) VALUES
+(1, 'zikka', 'zikka@gmail.com', '$2y$10$aFERNQvI3KKBaOE.OaytnONbIyzPPS1W1FGhBCurWrAk6Bo1EMgX6', 'admin.jpg', '', NULL, '2023-02-16 04:22:44');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `amenities`
+--
+
+CREATE TABLE `amenities` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `amenities`
+--
+
+INSERT INTO `amenities` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'Air Conditioner', '2022-07-01 05:32:35', '2022-07-01 05:32:35'),
+(2, 'Hair Dryer', '2022-07-01 05:32:55', '2022-07-01 05:32:55'),
+(3, 'Coffee Maker', '2022-07-01 05:33:07', '2022-07-01 05:33:07'),
+(4, 'Toiletries', '2022-07-01 05:33:29', '2022-07-01 05:33:29'),
+(5, 'Personal care', '2022-07-01 05:33:41', '2022-07-01 05:33:41'),
+(6, 'Free Breakfast', '2022-07-01 05:33:52', '2022-07-01 05:33:52'),
+(7, 'Free WiFi', '2022-07-01 05:34:00', '2022-07-01 05:34:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booked_rooms`
+--
+
+CREATE TABLE `booked_rooms` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `booking_date` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_no` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `booked_rooms`
+--
+
+INSERT INTO `booked_rooms` (`id`, `booking_date`, `order_no`, `room_id`, `created_at`, `updated_at`) VALUES
+(1, '08/08/2022', '1659579248', 1, NULL, NULL),
+(2, '15/08/2022', '1659579248', 6, NULL, NULL),
+(3, '16/08/2022', '1659579248', 6, NULL, NULL),
+(4, '08/08/2022', '1659808495', 4, NULL, NULL),
+(5, '09/08/2022', '1659808495', 4, NULL, NULL),
+(6, '10/08/2022', '1659808495', 4, NULL, NULL),
+(7, '04/09/2022', '1659923618', 4, '2022-08-07 19:53:38', '2022-08-07 19:53:38'),
+(8, '12/09/2022', '1659923618', 5, '2022-08-07 19:53:38', '2022-08-07 19:53:38'),
+(9, '13/09/2022', '1659923618', 5, '2022-08-07 19:53:38', '2022-08-07 19:53:38'),
+(10, '14/09/2022', '1659923618', 5, '2022-08-07 19:53:39', '2022-08-07 19:53:39'),
+(11, '15/09/2022', '1659923618', 5, '2022-08-07 19:53:39', '2022-08-07 19:53:39'),
+(12, '10/09/2022', '1659954645', 5, '2022-08-08 04:30:45', '2022-08-08 04:30:45'),
+(13, '11/09/2022', '1659954645', 5, '2022-08-08 04:30:45', '2022-08-08 04:30:45'),
+(14, '12/09/2022', '1659954645', 5, '2022-08-08 04:30:45', '2022-08-08 04:30:45'),
+(15, '18/10/2022', '1665914211', 6, '2022-10-16 02:56:52', '2022-10-16 02:56:52'),
+(16, '18/10/2022', '1665914373', 6, '2022-10-16 02:59:34', '2022-10-16 02:59:34'),
+(17, '18/10/2022', '1665914835', 6, '2022-10-16 03:07:17', '2022-10-16 03:07:17'),
+(18, '18/10/2022', '1665916149', 1, '2022-10-16 03:29:09', '2022-10-16 03:29:09'),
+(19, '24/10/2022', '1665916149', 4, '2022-10-16 03:29:09', '2022-10-16 03:29:09'),
+(20, '18/10/2022', '1665916185', 1, '2022-10-16 03:29:46', '2022-10-16 03:29:46'),
+(21, '24/10/2022', '1665916185', 4, '2022-10-16 03:29:46', '2022-10-16 03:29:46'),
+(22, '17/10/2022', '1665919987', 6, '2022-10-16 04:33:08', '2022-10-16 04:33:08'),
+(23, '16/10/2022', '1665923514', 6, '2022-10-16 05:31:54', '2022-10-16 05:31:54'),
+(24, '16/10/2022', '1665925374', 6, '2022-10-16 06:02:54', '2022-10-16 06:02:54'),
+(25, '16/10/2022', '1665925507', 6, '2022-10-16 06:05:07', '2022-10-16 06:05:07'),
+(26, '16/10/2022', '1665925592', 6, '2022-10-16 06:06:32', '2022-10-16 06:06:32'),
+(27, '16/10/2022', '1665926277', 6, '2022-10-16 06:17:58', '2022-10-16 06:17:58'),
+(28, '16/10/2022', '1665926297', 6, '2022-10-16 06:18:17', '2022-10-16 06:18:17'),
+(29, '16/10/2022', '1665926637', 6, '2022-10-16 06:23:57', '2022-10-16 06:23:57'),
+(30, '17/10/2022', '1665936022', 6, '2022-10-16 09:00:23', '2022-10-16 09:00:23'),
+(31, '17/10/2022', '1665936129', 6, '2022-10-16 09:02:10', '2022-10-16 09:02:10'),
+(32, '17/10/2022', '1665936129', 4, '2022-10-16 09:02:10', '2022-10-16 09:02:10'),
+(33, '16/02/2023', '1676546917', 6, '2023-02-16 04:28:37', '2023-02-16 04:28:37'),
+(34, '22/02/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(35, '23/02/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(36, '24/02/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(37, '25/02/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(38, '26/02/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(39, '27/02/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(40, '28/02/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(41, '01/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(42, '02/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(43, '03/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(44, '04/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(45, '05/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(46, '06/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(47, '07/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(48, '08/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(49, '09/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(50, '10/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(51, '11/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(52, '12/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(53, '13/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(54, '14/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(55, '15/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(56, '16/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(57, '17/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(58, '18/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(59, '19/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(60, '20/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(61, '21/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(62, '22/03/2023', '1676945840', 5, '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(63, '21/02/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(64, '22/02/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(65, '23/02/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(66, '24/02/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(67, '25/02/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(68, '26/02/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(69, '27/02/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(70, '28/02/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(71, '01/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(72, '02/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(73, '03/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(74, '04/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(75, '05/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(76, '06/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(77, '07/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(78, '08/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(79, '09/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(80, '10/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(81, '11/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(82, '12/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(83, '13/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(84, '14/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(85, '15/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(86, '16/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(87, '17/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(88, '18/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(89, '19/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(90, '20/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(91, '21/03/2023', '1676946207', 4, '2023-02-20 19:23:27', '2023-02-20 19:23:27'),
+(92, '21/02/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(93, '22/02/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(94, '23/02/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(95, '24/02/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(96, '25/02/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(97, '26/02/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(98, '27/02/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(99, '28/02/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(100, '01/03/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(101, '02/03/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(102, '03/03/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(103, '04/03/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(104, '05/03/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(105, '06/03/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(106, '07/03/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(107, '08/03/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(108, '09/03/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(109, '10/03/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(110, '11/03/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(111, '12/03/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(112, '13/03/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(113, '14/03/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(114, '15/03/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(115, '16/03/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(116, '17/03/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(117, '18/03/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(118, '19/03/2023', '1676949279', 5, '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(119, '26/02/2023', '1677346803', 4, '2023-02-25 10:40:04', '2023-02-25 10:40:04'),
+(120, '27/02/2023', '1677346803', 4, '2023-02-25 10:40:04', '2023-02-25 10:40:04'),
+(121, '07/06/2023', '1686066852', 1, '2023-06-06 08:54:12', '2023-06-06 08:54:12'),
+(122, '08/06/2023', '1686067064', 4, '2023-06-06 08:57:47', '2023-06-06 08:57:47'),
+(123, '09/06/2023', '1686067064', 4, '2023-06-06 08:57:47', '2023-06-06 08:57:47'),
+(124, '23/06/2023', '1686071124', 1, '2023-06-06 10:05:24', '2023-06-06 10:05:24'),
+(125, '13/06/2023', '1686642470', 1, '2023-06-13 00:47:50', '2023-06-13 00:47:50'),
+(126, '10/07/2023', '1686642678', 4, '2023-06-13 00:51:24', '2023-06-13 00:51:24'),
+(127, '19/06/2023', '1687162137', 5, '2023-06-19 01:08:57', '2023-06-19 01:08:57'),
+(128, '19/06/2023', '1687162400', 5, '2023-06-19 01:13:22', '2023-06-19 01:13:22'),
+(129, '19/06/2023', '1687165488', 1, '2023-06-19 02:04:48', '2023-06-19 02:04:48'),
+(130, '23/06/2023', '1687167045', 4, '2023-06-19 02:30:45', '2023-06-19 02:30:45'),
+(131, '19/06/2023', '1687177644', 4, '2023-06-19 05:27:24', '2023-06-19 05:27:24'),
+(132, '02/07/2023', '1687177866', 4, '2023-06-19 05:31:06', '2023-06-19 05:31:06'),
+(133, '05/07/2023', '1687179078', 4, '2023-06-19 05:51:18', '2023-06-19 05:51:18'),
+(134, '11/07/2023', '1687179965', 4, '2023-06-19 06:06:05', '2023-06-19 06:06:05'),
+(135, '13/06/2023', '1687180316', 5, '2023-06-19 06:11:56', '2023-06-19 06:11:56'),
+(136, '13/06/2023', '1687242320', 4, '2023-06-19 23:25:20', '2023-06-19 23:25:20'),
+(137, '09/07/2023', '1687242546', 4, '2023-06-19 23:29:06', '2023-06-19 23:29:06'),
+(138, '09/07/2023', '1687243153', 4, '2023-06-19 23:39:13', '2023-06-19 23:39:13'),
+(139, '09/07/2023', '1687243968', 1, '2023-06-19 23:52:48', '2023-06-19 23:52:48'),
+(140, '23/06/2023', '1687244317', 4, '2023-06-19 23:58:39', '2023-06-19 23:58:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customers`
+--
+
+CREATE TABLE `customers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `state` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `zip` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `photo` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `token` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `name`, `email`, `password`, `phone`, `country`, `address`, `state`, `city`, `zip`, `photo`, `token`, `status`, `created_at`, `updated_at`) VALUES
+(4, 'zikka rufa', 'zikkarufa@gmail.com', '$2y$10$i3Kcdzl8AbK.1F4RMhpvsOkuno0UWrN9VieCoaKoG.UpvYQVxsUNe', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'd5081938123afdce31087beb59664194e6da62a6a2aa930938248eb724956a1e', 0, '2023-02-16 04:23:43', '2023-06-22 01:56:30'),
+(5, 'salis', 'zikkasalis@gmail.com', '$2y$10$ImDgnbPYgrC6595eO.pCCukF0CaPE1r60OpPCakxJ9UmKQ3.7mSX.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'fdfebb26e42867a8d88aff4c833cca7a547c3ac0993f96a7ca654c7812166053', 1, '2023-02-20 19:13:01', '2023-02-25 19:46:41'),
+(6, 'sal', 'wandalifiyah@gmail.com', '$2y$10$MnuJmqdgJSuu7jDXWrn4nOHl90Wlp2jnUj9ArUkBW/M2oxWEZVKWC', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '8f49a381e37f413337e2dd2e83a6b104fefc7ce921b68392f802f4068c091bf8', 1, '2023-02-20 19:13:46', '2023-02-20 19:14:06'),
+(7, 'Adinda', 'adinda@gmail.com', '$2y$10$lnjD6mvpq8zC1j82h/ck/OjnRGMB1e6TJ9UBL8Ot.9kQmzGASJKgu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '026c67255e6bdb59702d05bada0551d6e838038699fe9f4450196386111702ed', 1, '2023-02-25 10:02:38', '2023-02-25 10:02:56'),
+(8, 'zulfahsani', 'zulfahsaniyyah@gmail.com', '$2y$10$4/q0.FyjO/DT1VEQ1BuIp.Ob6QXPFcOU8cY6FU1KlsVVeMAGBDj8O', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '91273a0040ec109fad3e6e35ab944c757cd8c5ca7330566508254698c69334f8', 0, '2023-02-26 08:55:28', '2023-02-26 08:55:28'),
+(9, 'zulfahsani', '09030620043@student.uinsby.ac.id', '$2y$10$ZBexvAekXQ7yegETzlT7KuHm1bb.BBClSdZqBQ52yVSdAmH1FAiNK', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ba04c2ae7156657a88e71f8d81db85427a5ea606c3a7db642114b5db7b987ce0', 1, '2023-02-26 08:57:00', '2023-06-22 01:54:36'),
+(10, 'zika', 'zika@gmail.com', '$2y$10$SPOE0LT.xLHsZiZneGiLU.D0CfSimVX3h0H/xQRrmVTxWhYCeLFeu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'a8ddbde721f5ed7099ab41bc8bb8fb0de2c993c6664d28ba1ad6bbf99bfe9989', 1, '2023-06-06 08:48:10', '2023-06-06 08:48:35'),
+(11, 'Bejo', 'bejo@gmail.com', '$2y$10$.Z3ieX4xYidlQXX4PcWewuE8/EU6LMxTUANUMpW3jz/0PdipM5HLm', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '3c178e8cf2f3f56ef15fa68575ea213a48f347c93ab2d6a7df1fdd4170f2451f', 1, '2023-06-13 00:39:26', '2023-06-13 00:40:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faqs`
+--
+
+CREATE TABLE `faqs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `question` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `answer` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `faqs`
+--
+
+INSERT INTO `faqs` (`id`, `question`, `answer`, `created_at`, `updated_at`) VALUES
+(6, 'Bagaimana cara melakukan reservasi ?', '<p>Langkah pertama dapat memilih kamar yang ingin direservasi, kemudian memasukkan data jumlah penghuni dan lama reservasi. Jangan lupa pastikan Anda sudah memiliki akun.</p>', '2023-02-26 22:32:36', '2023-02-26 22:32:36');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `features`
+--
+
+CREATE TABLE `features` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `icon` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `heading` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `text` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `features`
+--
+
+INSERT INTO `features` (`id`, `icon`, `heading`, `text`, `created_at`, `updated_at`) VALUES
+(1, 'fa fa-clock-o', '24 hour Room service', 'If you find a lower online rate, we will match it and give you an additional 25% off on your stay.', '2022-06-25 20:46:45', '2022-06-25 20:46:45'),
+(2, 'fa fa-wifi', 'Free Wifi', 'If you find a lower online rate, we will match it and give you an additional 25% off on your stay.', '2022-06-25 20:48:09', '2022-06-25 20:48:09'),
+(3, 'fa fa-superpowers', 'Enjoy Free Nights', 'If you find a lower online rate, we will match it and give you an additional 25% off on your stay.', '2022-06-25 20:48:35', '2022-06-25 20:48:35'),
+(4, 'fa fa-cubes', 'Swimming Pool', 'If you find a lower online rate, we will match it and give you an additional 25% off on your stay.', '2022-06-25 20:49:00', '2022-06-25 21:03:56');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(5, '2022_02_18_035205_create_admins_table', 1),
+(6, '2022_06_24_093653_create_slides_table', 2),
+(7, '2022_06_26_021258_create_features_table', 3),
+(8, '2022_06_26_033305_create_testimonials_table', 4),
+(9, '2022_06_26_051426_create_posts_table', 5),
+(10, '2022_06_26_135533_create_photos_table', 6),
+(11, '2022_06_27_021908_create_videos_table', 7),
+(12, '2022_06_27_050408_create_faqs_table', 8),
+(13, '2022_06_27_104626_create_pages_table', 9),
+(14, '2022_06_29_115954_create_subscribers_table', 10),
+(15, '2022_07_01_104958_create_amenities_table', 11),
+(16, '2022_07_02_005301_create_rooms_table', 12),
+(17, '2022_07_02_010035_create_room_photos_table', 13),
+(18, '2022_07_04_065843_create_customers_table', 14),
+(19, '2022_07_13_034131_create_orders_table', 15),
+(20, '2022_07_13_034641_create_order_details_table', 16),
+(21, '2022_08_07_135954_create_booked_rooms_table', 17),
+(22, '2022_08_08_120610_create_settings_table', 18);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `order_no` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `transaction_id` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payment_method` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `snap_token` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bukti_pembayaran` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `card_last_digit` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `paid_amount` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `booking_date` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `customer_id`, `order_no`, `transaction_id`, `payment_method`, `snap_token`, `bukti_pembayaran`, `card_last_digit`, `paid_amount`, `booking_date`, `status`, `created_at`, `updated_at`) VALUES
+(48, 6, '1676945840', '1676945840', 'Bank Transfer', '', NULL, '', '26100000', '21/02/2023', 'Pending', '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(50, 6, '1676949279', '1676949279', 'Midtrans', '8603c3c5-c20e-4b46-b18d-002c68d9494f', NULL, '', '24300000', '21/02/2023', 'Pending', '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(51, 6, '1677346803', '1677346803', 'Midtrans', 'ec46f828-c354-49ac-bc88-87a963aba3ea', NULL, '', '500000', '25/02/2023', 'Pending', '2023-02-25 10:40:04', '2023-02-25 10:40:04'),
+(52, 10, '1686066852', '1686066852', 'Bank Transfer', '', 'bukti_pembayaran/Nv8PGC6OYpfkaxVJdc8tH282X7Fc6YP3HSeCZI1V.png', '', '500000', '06/06/2023', 'Completed', '2023-06-06 08:54:12', '2023-06-06 08:54:49'),
+(53, 10, '1686067064', '1686067064', 'Midtrans', '4d01c1b5-8995-49bc-831a-184236097b02', NULL, '', '500000', '06/06/2023', 'Completed', '2023-06-06 08:57:47', '2023-06-06 09:01:11'),
+(54, 10, '1686071088', '1686071088', 'Bank Transfer', '', NULL, '', '500000', '06/06/2023', 'Pending', '2023-06-06 10:04:48', '2023-06-06 10:04:48'),
+(55, 10, '1686071124', '1686071124', 'Bank Transfer', '', 'bukti_pembayaran/RF9icBtRi2os2sV6ucvHtb720XzSchJfvW0dbECV.png', '', '500000', '06/06/2023', 'Completed', '2023-06-06 10:05:24', '2023-06-06 10:06:28'),
+(56, 11, '1686642470', '1686642470', 'Bank Transfer', '', 'bukti_pembayaran/17pAyO0K6sqH4V8KTwR8x0m0vwbOP2XrCAXxgIvJ.png', '', '500000', '13/06/2023', 'Pending', '2023-06-13 00:47:50', '2023-06-13 00:48:16'),
+(57, 11, '1686642678', '1686642678', 'Midtrans', 'c99bcdd1-811d-4853-b75f-35d93fcaef13', NULL, '', '250000', '13/06/2023', 'Pending', '2023-06-13 00:51:24', '2023-06-13 00:51:24'),
+(58, 10, '1687162137', '1687162137', 'Bank Transfer', '', 'bukti_pembayaran/iDKEBmAseUAQLOEVFN6QsaufXUyiiZPR9pIwP45v.jpg', '', '900000', '19/06/2023', 'Completed', '2023-06-19 01:08:57', '2023-06-19 01:11:18'),
+(59, 7, '1687162400', '1687162400', 'Midtrans', '67285b7d-8e92-4882-9740-08267f4dc87a', NULL, '', '900000', '19/06/2023', 'Completed', '2023-06-19 01:13:22', '2023-06-19 01:14:17'),
+(60, 10, '1687165488', '1687165488', 'Bank Transfer', '', 'bukti_pembayaran/TdWCFB4IjUmg9FQQ2dfmSFSQNVxkXwOZgqOgFveF.png', '', '500000', '19/06/2023', 'Pending', '2023-06-19 02:04:48', '2023-06-19 02:05:01'),
+(61, 10, '1687167045', '1687167045', 'Bank Transfer', '', 'bukti_pembayaran/G0uqKXDeBQjKBte21OKmANoLxlWrIfPb0Xl4rVth.png', '', '250000', '19/06/2023', 'Pending', '2023-06-19 02:30:45', '2023-06-19 02:30:55'),
+(62, 10, '1687177644', '1687177644', 'Bank Transfer', '', 'C:\\Users\\zakia\\Downloads\\wismaPPSDM\\public\\storage\\phpED7E.tmp', '', '250000', '19/06/2023', 'Pending', '2023-06-19 05:27:24', '2023-06-19 05:27:32'),
+(63, 10, '1687177866', '1687177866', 'Bank Transfer', '', 'C:\\Users\\zakia\\Downloads\\wismaPPSDM\\public\\uploads\\php804B.tmp', '', '250000', '19/06/2023', 'Pending', '2023-06-19 05:31:06', '2023-06-19 05:31:26'),
+(64, 10, '1687179078', '1687179078', 'Bank Transfer', '', 'bukti_pembayaran\\public', '', '250000', '19/06/2023', 'Pending', '2023-06-19 05:51:18', '2023-06-19 05:51:45'),
+(65, 10, '1687179965', '1687179965', 'Bank Transfer', '', 'bukti_pembayaran/wmhR44dClsahmHlDgXYmUe2iOZruGMc6Sxxfa2Ou.png', '', '250000', '19/06/2023', 'Pending', '2023-06-19 06:06:05', '2023-06-19 06:06:14'),
+(66, 10, '1687180316', '1687180316', 'Bank Transfer', '', 'FCoOaYjUYPUwLztBVsM4gy5sJf4z4APIBjBJZjmI.png', '', '900000', '19/06/2023', 'Pending', '2023-06-19 06:11:56', '2023-06-19 06:12:04'),
+(67, 10, '1687242320', '1687242320', 'Bank Transfer', '', 'public/storage/gYamPQTQh1TTs0kOuu0AiJ6gDj05xYd6DiUfOowJ.png', '', '250000', '20/06/2023', 'Pending', '2023-06-19 23:25:20', '2023-06-19 23:26:30'),
+(68, 10, '1687242546', '1687242546', 'Bank Transfer', '', 'C:\\Users\\zakia\\Downloads\\wismaPPSDM\\public\\storage\\bukti_pembayaran8123', '', '250000', '20/06/2023', 'Pending', '2023-06-19 23:29:06', '2023-06-19 23:37:55'),
+(69, 10, '1687243153', '1687243153', 'Bank Transfer', '', 'C:\\Users\\zakia\\Downloads\\wismaPPSDM\\public\\storage\\bukti_pembayaran3049.jpg', '', '250000', '20/06/2023', 'Pending', '2023-06-19 23:39:13', '2023-06-19 23:39:28'),
+(70, 10, '1687243968', '1687243968', 'Bank Transfer', '', 'bukti_pembayaran5247.jpg', '', '500000', '20/06/2023', 'Pending', '2023-06-19 23:52:48', '2023-06-19 23:53:00'),
+(71, 10, '1687244317', '1687244317', 'Midtrans', '48d6fb65-c2fb-4e26-9171-0aac1b471ae9', NULL, '', '250000', '20/06/2023', 'Pending', '2023-06-19 23:58:39', '2023-06-19 23:58:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_details`
+--
+
+CREATE TABLE `order_details` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `order_no` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `checkin_date` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `checkout_date` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `adult` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `children` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subtotal` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `order_details`
+--
+
+INSERT INTO `order_details` (`id`, `order_id`, `room_id`, `order_no`, `checkin_date`, `checkout_date`, `adult`, `children`, `subtotal`, `created_at`, `updated_at`) VALUES
+(28, 48, 5, '1676945840', '22/02/2023', '23/03/2023', '2', '2', '26100000', '2023-02-20 19:17:20', '2023-02-20 19:17:20'),
+(30, 50, 5, '1676949279', '21/02/2023', '20/03/2023', '1', '1', '24300000', '2023-02-20 20:14:40', '2023-02-20 20:14:40'),
+(31, 51, 4, '1677346803', '26/02/2023', '28/02/2023', '1', '1', '500000', '2023-02-25 10:40:04', '2023-02-25 10:40:04'),
+(32, 52, 1, '1686066852', '07/06/2023', '08/06/2023', '2', '1', '500000', '2023-06-06 08:54:12', '2023-06-06 08:54:12'),
+(33, 53, 4, '1686067064', '08/06/2023', '10/06/2023', '1', '0', '500000', '2023-06-06 08:57:47', '2023-06-06 08:57:47'),
+(34, 55, 1, '1686071124', '23/06/2023', '24/06/2023', '1', '1', '500000', '2023-06-06 10:05:24', '2023-06-06 10:05:24'),
+(35, 56, 1, '1686642470', '13/06/2023', '14/06/2023', '1', '1', '500000', '2023-06-13 00:47:50', '2023-06-13 00:47:50'),
+(36, 57, 4, '1686642678', '10/07/2023', '11/07/2023', '1', '2', '250000', '2023-06-13 00:51:24', '2023-06-13 00:51:24'),
+(37, 58, 5, '1687162137', '19/06/2023', '20/06/2023', '1', '1', '900000', '2023-06-19 01:08:57', '2023-06-19 01:08:57'),
+(38, 59, 5, '1687162400', '19/06/2023', '20/06/2023', '1', '1', '900000', '2023-06-19 01:13:22', '2023-06-19 01:13:22'),
+(39, 60, 1, '1687165488', '19/06/2023', '20/06/2023', '1', '1', '500000', '2023-06-19 02:04:48', '2023-06-19 02:04:48'),
+(40, 61, 4, '1687167045', '23/06/2023', '24/06/2023', '1', '1', '250000', '2023-06-19 02:30:45', '2023-06-19 02:30:45'),
+(41, 62, 4, '1687177644', '19/06/2023', '20/06/2023', '1', '1', '250000', '2023-06-19 05:27:24', '2023-06-19 05:27:24'),
+(42, 63, 4, '1687177866', '02/07/2023', '03/07/2023', '1', '1', '250000', '2023-06-19 05:31:06', '2023-06-19 05:31:06'),
+(43, 64, 4, '1687179078', '05/07/2023', '06/07/2023', '1', '1', '250000', '2023-06-19 05:51:18', '2023-06-19 05:51:18'),
+(44, 65, 4, '1687179965', '11/07/2023', '12/07/2023', '1', '1', '250000', '2023-06-19 06:06:05', '2023-06-19 06:06:05'),
+(45, 66, 5, '1687180316', '13/06/2023', '14/06/2023', '1', '1', '900000', '2023-06-19 06:11:56', '2023-06-19 06:11:56'),
+(46, 67, 4, '1687242320', '13/06/2023', '14/06/2023', '1', '1', '250000', '2023-06-19 23:25:20', '2023-06-19 23:25:20'),
+(47, 68, 4, '1687242546', '09/07/2023', '10/07/2023', '1', '1', '250000', '2023-06-19 23:29:06', '2023-06-19 23:29:06'),
+(48, 69, 4, '1687243153', '09/07/2023', '10/07/2023', '1', '1', '250000', '2023-06-19 23:39:13', '2023-06-19 23:39:13'),
+(49, 70, 1, '1687243968', '09/07/2023', '10/07/2023', '1', '1', '500000', '2023-06-19 23:52:48', '2023-06-19 23:52:48'),
+(50, 71, 4, '1687244317', '23/06/2023', '24/06/2023', '1', '1', '250000', '2023-06-19 23:58:39', '2023-06-19 23:58:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pages`
+--
+
+CREATE TABLE `pages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `about_heading` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `about_content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `about_status` int(11) NOT NULL,
+  `terms_heading` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `terms_content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `terms_status` int(11) NOT NULL,
+  `privacy_heading` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `privacy_content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `privacy_status` int(11) NOT NULL,
+  `contact_heading` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `contact_map` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contact_status` int(11) NOT NULL,
+  `photo_gallery_heading` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo_gallery_status` int(11) NOT NULL,
+  `video_gallery_heading` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `video_gallery_status` int(11) NOT NULL,
+  `faq_heading` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `faq_status` int(11) NOT NULL,
+  `blog_heading` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `blog_status` int(11) NOT NULL,
+  `room_heading` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cart_heading` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cart_status` int(11) NOT NULL,
+  `checkout_heading` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `checkout_status` int(11) NOT NULL,
+  `payment_heading` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `signup_heading` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `signup_status` int(11) NOT NULL,
+  `signin_heading` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `signin_status` int(11) NOT NULL,
+  `forget_password_heading` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `reset_password_heading` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pages`
+--
+
+INSERT INTO `pages` (`id`, `about_heading`, `about_content`, `about_status`, `terms_heading`, `terms_content`, `terms_status`, `privacy_heading`, `privacy_content`, `privacy_status`, `contact_heading`, `contact_map`, `contact_status`, `photo_gallery_heading`, `photo_gallery_status`, `video_gallery_heading`, `video_gallery_status`, `faq_heading`, `faq_status`, `blog_heading`, `blog_status`, `room_heading`, `cart_heading`, `cart_status`, `checkout_heading`, `checkout_status`, `payment_heading`, `signup_heading`, `signup_status`, `signin_heading`, `signin_status`, `forget_password_heading`, `reset_password_heading`, `created_at`, `updated_at`) VALUES
+(1, 'About Us', '<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio.</div><div><br></div><div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio.</div><div><br></div><div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio.</div><div><br></div><div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio.</div>', 1, 'Terms and Conditions', '<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio.</div><div><br></div><div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio.</div><div><br></div><div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio.</div><div><br></div><div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio.</div>', 1, 'Privacy Policy', '<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio.</div><div><br></div><div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio.</div><div><br></div><div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio.</div><div><br></div><div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure delectus, aperiam eius sed suscipit corporis quas, nisi dicta harum excepturi quis est id deserunt a, ipsa autem in distinctio.</div>', 1, 'Contact', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26361688.302253906!2d-113.76378198869888!3d36.23999124494682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited%20States!5e0!3m2!1sen!2sbd!4v1656378870953!5m2!1sen!2sbd\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 1, 'Photo Gallery', 1, 'Video Gallery', 1, 'FAQ', 1, 'Blog', 1, 'Room', 'Cart', 1, 'Checkout', 1, 'Payment', 'Sign Up', 1, 'Sign In', 1, 'Forget Password', 'Reset Password', NULL, '2022-07-05 03:47:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `photos`
+--
+
+CREATE TABLE `photos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `photo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `caption` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `photo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `heading` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `short_content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `total_view` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `photo`, `heading`, `short_content`, `content`, `total_view`, `created_at`, `updated_at`) VALUES
+(5, '1677474926.png', 'Widyapatra', 'Wisma Widya Patra III memiliki konsep Family services.', '<p>Wisma Widya Patra III memiliki konsep Family services untuk semua sekmen tamu sesuai kebutuhan mereka, business, holiday, dan pelatihan dengan berbagai fasilitas penunjang di dalamnya. Pelayanan utama kami adalah kenyamanan untuk semua tamu yang dikemas kekeluargaan, sehingga akan merasakan seperti home bagi tamu.&nbsp;<br></p>', 1, '2023-02-26 22:15:26', '2023-02-26 22:15:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `promos`
+--
+
+CREATE TABLE `promos` (
+  `id` int(11) NOT NULL,
+  `nama_promo` varchar(225) NOT NULL,
+  `nama_wisma` varchar(225) NOT NULL,
+  `kamar` varchar(225) NOT NULL,
+  `start_date` date NOT NULL,
+  `finish_date` date NOT NULL,
+  `kuota` int(11) NOT NULL,
+  `discount` varchar(30) NOT NULL,
+  `action` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rekening`
+--
+
+CREATE TABLE `rekening` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `bank_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `atas_nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_rekening` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `rekening`
+--
+
+INSERT INTO `rekening` (`id`, `bank_name`, `atas_nama`, `no_rekening`, `created_at`, `updated_at`) VALUES
+(1, 'BRI', 'PPSDM MIGAS', '37829283', NULL, '2022-06-09 02:29:48'),
+(3, 'BRI SYARIAH', 'PPSDM MIGAS', '321546578', '2020-03-22 08:35:31', '2022-06-09 02:29:43'),
+(4, 'BCA', 'PPSDM MIGAS', '1234567899', '2020-03-24 17:22:37', '2022-06-09 02:29:57'),
+(5, 'MANDIRI', 'PPSDM MIGAS', '12345679', '2020-03-24 17:23:12', '2022-06-09 02:29:52');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rooms`
+--
+
+CREATE TABLE `rooms` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `total_rooms` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `amenities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `size` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `total_beds` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `total_bathrooms` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `total_balconies` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `total_guests` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `featured_photo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `video_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `rooms`
+--
+
+INSERT INTO `rooms` (`id`, `name`, `description`, `price`, `total_rooms`, `amenities`, `size`, `total_beds`, `total_bathrooms`, `total_balconies`, `total_guests`, `featured_photo`, `video_id`, `created_at`, `updated_at`) VALUES
+(1, 'Widya Patra I', '<span style=\"color: rgb(49, 49, 49); font-family: Hind, sans-serif; font-size: 16px;\">Alamat&nbsp; &nbsp;:&nbsp;</span><span style=\"color: rgb(32, 33, 36); font-family: arial, sans-serif;\">Jl. Tarakan II, Mentul, Karangboyo, Kec. Cepu, Kabupaten Blora, Jawa Tengah 58315</span><br style=\"color: rgb(49, 49, 49); font-family: Hind, sans-serif; font-size: 16px;\"><span style=\"color: rgb(49, 49, 49); font-family: Hind, sans-serif; font-size: 16px;\">Telepon&nbsp; : +62 823 2911 7272</span><br style=\"color: rgb(49, 49, 49); font-family: Hind, sans-serif; font-size: 16px;\"><span style=\"color: rgb(49, 49, 49); font-family: Hind, sans-serif; font-size: 16px;\">Email&nbsp; &nbsp; &nbsp;: widyapatra.migas@gmail.com</span><br>', '500000', '1', '1,4,5,6,7', '100 sqm2', '1', '1', '1', '2', '1676947825.jpg', 'RYk4CPFNTro', '2022-07-01 21:12:23', '2023-06-19 01:17:56'),
+(4, 'Wisma Nglajo 2', '<span style=\"color: rgb(49, 49, 49); font-family: Hind, sans-serif; font-size: 16px;\">Alamat&nbsp; &nbsp; &nbsp; : Jl. Plaju Nglajo, Kec. Cepu, Kabupaten Blora, Jawa Tengah 58112</span><br style=\"color: rgb(49, 49, 49); font-family: Hind, sans-serif; font-size: 16px;\"><span style=\"color: rgb(49, 49, 49); font-family: Hind, sans-serif; font-size: 16px;\">Telepon&nbsp; &nbsp; : +62 823 2911 7272</span><br style=\"color: rgb(49, 49, 49); font-family: Hind, sans-serif; font-size: 16px;\"><span style=\"color: rgb(49, 49, 49); font-family: Hind, sans-serif; font-size: 16px;\">Email&nbsp; &nbsp; &nbsp; &nbsp; : widyapatra.migas@gmail.com</span><br>', '250000', '10', '1,3,4,6,7', '150 sqm2', '1', '1', '2', '2', '1676947682.jpg', 'RYk4CPFNTro', '2022-07-03 08:02:42', '2023-02-20 19:48:02'),
+(5, 'Widya Patra II', '<div class=\"QsDR1c\" style=\"color: rgb(32, 33, 36); font-family: arial, sans-serif;\"><div class=\"wDYxhc\" data-attrid=\"kc:/location/location:address\" data-md=\"1002\" lang=\"id-ID\" data-hveid=\"CEsQAA\" data-ved=\"2ahUKEwiTpYPVzaX9AhUKXGwGHb8jD9kQkCl6BAhLEAA\" style=\"clear: none; padding-left: 15px; padding-right: 15px;\"><div class=\"Z1hOCe\"><div class=\"zloOqf PZPZlf\" data-dtype=\"d3ifr\" data-local-attribute=\"d3adr\" data-ved=\"2ahUKEwiTpYPVzaX9AhUKXGwGHb8jD9kQghwoAHoECEsQAQ\" style=\"margin-top: 7px;\"><span class=\"w8qArf\" style=\"font-weight: bolder;\"><a class=\"fl\" href=\"https://www.google.com/search?sxsrf=AJOqlzUGsU-t5tZMjTZt74ePL8eWBtQMrQ:1676947878898&amp;q=wisma+widya+patra+3+alamat&amp;ludocid=939923915070284577&amp;sa=X&amp;ved=2ahUKEwiTpYPVzaX9AhUKXGwGHb8jD9kQ6BN6BAhLEAI\" data-ved=\"2ahUKEwiTpYPVzaX9AhUKXGwGHb8jD9kQ6BN6BAhLEAI\" style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0.1); outline: 0px; color: rgb(32, 33, 36) !important;\">Alamat</a><span class=\"eTVOZd\">:</span>&nbsp;</span><span class=\"LrzXr\">Jl. Olah Raga No.1, Kampungbaru, Karangboyo, Kec. Cepu, Kabupaten Blora, Jawa Tengah 58315</span><div class=\"GnGVVe\" style=\"color: rgb(112, 117, 122);\"></div><div jscontroller=\"sc5wWb\" class=\"GDRHkb\" data-at=\"5\" data-uid=\"1\" jsaction=\"rcuQ6b:npT2md\" style=\"padding-left: 16px;\"></div><div jscontroller=\"sc5wWb\" class=\"GDRHkb\" data-at=\"2\" data-uid=\"1\" jsaction=\"rcuQ6b:npT2md\" style=\"padding-left: 16px;\"></div></div></div></div></div><div style=\"color: rgb(32, 33, 36); font-family: arial, sans-serif;\"></div><div class=\"owjCYb\" style=\"color: rgb(32, 33, 36); font-family: arial, sans-serif;\"></div><div class=\"QsDR1c\" style=\"color: rgb(32, 33, 36); font-family: arial, sans-serif;\"><div class=\"wDYxhc\" data-attrid=\"kc:/collection/knowledge_panels/has_phone:phone\" data-md=\"1006\" lang=\"id-ID\" data-hveid=\"CE8QAA\" data-ved=\"2ahUKEwiTpYPVzaX9AhUKXGwGHb8jD9kQkCl6BAhPEAA\" style=\"clear: none; padding-left: 15px; padding-right: 15px;\"><div class=\"Z1hOCe\"><div class=\"zloOqf PZPZlf\" data-dtype=\"d3ifr\" data-local-attribute=\"d3ph\" data-ved=\"2ahUKEwiTpYPVzaX9AhUKXGwGHb8jD9kQ8I0BKAB6BAhPEAE\" style=\"margin-top: 7px;\"><span class=\"w8qArf\" style=\"font-weight: bolder;\"><a class=\"fl\" href=\"https://www.google.com/search?sxsrf=AJOqlzUGsU-t5tZMjTZt74ePL8eWBtQMrQ:1676947878898&amp;q=wisma+widya+patra+3+telepon&amp;ludocid=939923915070284577&amp;sa=X&amp;ved=2ahUKEwiTpYPVzaX9AhUKXGwGHb8jD9kQ6BN6BAhPEAI\" data-ved=\"2ahUKEwiTpYPVzaX9AhUKXGwGHb8jD9kQ6BN6BAhPEAI\" style=\"text-decoration-line: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1); outline: 0px; color: rgb(32, 33, 36) !important;\">Telepon</a><span class=\"eTVOZd\">:</span>&nbsp;</span><span class=\"LrzXr zdqRlf kno-fv\"><a data-dtype=\"d3ph\" data-local-attribute=\"d3ph\" jscontroller=\"LWZElb\" href=\"https://www.google.com/search?q=widya+patra+11&amp;sxsrf=AJOqlzVGrXqQ8dEuK0MjUxm7FJJYY81Btw%3A1676947790968&amp;ei=TjH0Y9rmOtePseMP9au44A4&amp;ved=0ahUKEwjaxYyrzaX9AhXXR2wGHfUVDuwQ4dUDCA4&amp;uact=5&amp;oq=widya+patra+11&amp;gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIFCCEQoAEyBQghEKABMgUIIRCgAToKCAAQRxDWBBCwAzoECCMQJzoKCC4QxwEQrwEQQzoLCC4QgAQQxwEQrwE6CQgAEBYQHhDxBEoECEEYAFCgBVi6C2D6GGgBcAF4AIABrgGIAbUDkgEDMC4zmAEAoAEByAEIwAEB&amp;sclient=gws-wiz-serp#\" jsdata=\"QKGTRc;_;CS0I/Q\" jsaction=\"rcuQ6b:npT2md;F75qrd\" data-ved=\"2ahUKEwiTpYPVzaX9AhUKXGwGHb8jD9kQkAgoAHoECE8QAw\" style=\"color: rgb(26, 13, 171); text-decoration-line: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1); outline: 0px;\">0823-2911-7272</a></span></div></div></div></div>', '900000', '2', '1,2,3,4,6,7', '200 sqm2', '2', '2', '2', '4', '1676947894.jpg', 'RYk4CPFNTro', '2022-07-03 08:06:01', '2023-02-20 19:51:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `room_photos`
+--
+
+CREATE TABLE `room_photos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `photo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `settings`
+--
+
+CREATE TABLE `settings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `logo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `favicon` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `top_bar_phone` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `top_bar_email` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `home_feature_status` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `home_room_total` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `home_room_status` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `home_testimonial_status` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `home_latest_post_total` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `home_latest_post_status` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `footer_address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `footer_phone` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `footer_email` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `copyright` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `linkedin` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pinterest` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `theme_color_1` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `theme_color_2` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `analytic_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`id`, `logo`, `favicon`, `top_bar_phone`, `top_bar_email`, `home_feature_status`, `home_room_total`, `home_room_status`, `home_testimonial_status`, `home_latest_post_total`, `home_latest_post_status`, `footer_address`, `footer_phone`, `footer_email`, `copyright`, `facebook`, `twitter`, `linkedin`, `pinterest`, `theme_color_1`, `theme_color_2`, `analytic_id`, `created_at`, `updated_at`) VALUES
+(1, '1676547129.png', '1659970382.png', '+62 823 2911 7272', 'widyapatra.migas@gmail.com', 'Show', '4', 'Show', 'Show', '3', 'Show', 'Jl. Sorogo No.1, Kampungbaru, Karangboyo, Kec. Cepu, Kabupaten Blora, Jawa Tengah 58315', '+62 823 2911 7272', 'widyapatra.migas@gmail.com', 'Copyright 2023, Wisma PPSDM Migas. All Rights Reserved.', 'https://www.facebook.com', 'https://www.twitter.com', 'https://www.linkedin.com', 'https://www.pinterest.com', '#00215B', '#ffd3ce', 'UA-84213520-6', NULL, '2023-02-20 19:28:09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `slides`
+--
+
+CREATE TABLE `slides` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `photo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `heading` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `text` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `button_text` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `button_url` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `slides`
+--
+
+INSERT INTO `slides` (`id`, `photo`, `heading`, `text`, `button_text`, `button_url`, `created_at`, `updated_at`) VALUES
+(5, '1676944934.png', 'WIDYAPATRA', NULL, NULL, NULL, '2023-02-20 19:02:14', '2023-02-20 19:02:14'),
+(6, '1677467259.jpg', 'WISMA PPSDM MIGAS', NULL, NULL, NULL, '2023-02-26 20:07:39', '2023-02-26 20:07:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subscribers`
+--
+
+CREATE TABLE `subscribers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `email` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `subscribers`
+--
+
+INSERT INTO `subscribers` (`id`, `email`, `token`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'aa@gmail.com', '', 1, '2022-06-29 06:12:46', '2022-06-29 08:14:51'),
+(2, 'bb@gmail.com', '', 1, '2022-06-29 08:16:18', '2022-06-29 08:16:47'),
+(3, 'cc@gmail.com', '89c61eac3132dbf53502d5e17d51bfb523eaa9dfe0a06c21a08f6ee6c185bfb6', 0, '2022-06-29 18:06:54', '2022-06-29 18:06:54');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `testimonials`
+--
+
+CREATE TABLE `testimonials` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `photo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `designation` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `testimonials`
+--
+
+INSERT INTO `testimonials` (`id`, `photo`, `name`, `designation`, `comment`, `created_at`, `updated_at`) VALUES
+(4, '1677474539.jpg', 'Adinda Ummay', 'Wisma Widya Patra I', 'Pelayanan ramah dan baik', '2023-02-26 22:08:59', '2023-02-26 22:08:59');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Jago Software', 'jagosoftware@shopee.co.id', '2022-10-10 06:50:33', '$2y$10$4PribkSBygvCFsEu6nyZcex2XVsZYP6qlI/l3qzqaghvhqH.UNqJi', NULL, '2022-09-09 13:22:47', '2022-09-09 13:22:47');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `videos`
+--
+
+CREATE TABLE `videos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `video_id` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `caption` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `videos`
+--
+
+INSERT INTO `videos` (`id`, `video_id`, `caption`, `created_at`, `updated_at`) VALUES
+(1, 'RYk4CPFNTro', 'PPSDM MIGAS', '2022-06-26 20:53:46', '2023-02-26 22:19:16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wismas`
+--
+
+CREATE TABLE `wismas` (
+  `id` int(11) NOT NULL,
+  `nama_wisma` varchar(225) NOT NULL,
+  `alamat_wisma` varchar(225) NOT NULL,
+  `jenis_ruangan` enum('VIP','Standart') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `amenities`
+--
+ALTER TABLE `amenities`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `booked_rooms`
+--
+ALTER TABLE `booked_rooms`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`id`);
+
+--
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `faqs`
+--
+ALTER TABLE `faqs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `features`
+--
+ALTER TABLE `features`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_details`
+--
+ALTER TABLE `order_details`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pages`
+--
+ALTER TABLE `pages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indexes for table `photos`
+--
+ALTER TABLE `photos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `promos`
+--
+ALTER TABLE `promos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `rekening`
+--
+ALTER TABLE `rekening`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `rooms`
+--
+ALTER TABLE `rooms`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `room_photos`
+--
+ALTER TABLE `room_photos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `slides`
+--
+ALTER TABLE `slides`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `subscribers`
+--
+ALTER TABLE `subscribers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `testimonials`
+--
+ALTER TABLE `testimonials`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- Indexes for table `videos`
+--
+ALTER TABLE `videos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `wismas`
+--
+ALTER TABLE `wismas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `amenities`
+--
+ALTER TABLE `amenities`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `booked_rooms`
+--
+ALTER TABLE `booked_rooms`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
+
+--
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `faqs`
+--
+ALTER TABLE `faqs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `features`
+--
+ALTER TABLE `features`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+
+--
+-- AUTO_INCREMENT for table `order_details`
+--
+ALTER TABLE `order_details`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT for table `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `photos`
+--
+ALTER TABLE `photos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `promos`
+--
+ALTER TABLE `promos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `rekening`
+--
+ALTER TABLE `rekening`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `rooms`
+--
+ALTER TABLE `rooms`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `room_photos`
+--
+ALTER TABLE `room_photos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `settings`
+--
+ALTER TABLE `settings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `slides`
+--
+ALTER TABLE `slides`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `subscribers`
+--
+ALTER TABLE `subscribers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `testimonials`
+--
+ALTER TABLE `testimonials`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `videos`
+--
+ALTER TABLE `videos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `wismas`
+--
+ALTER TABLE `wismas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
