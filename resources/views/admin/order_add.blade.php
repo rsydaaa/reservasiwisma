@@ -28,23 +28,22 @@
                             <div class="col-lg-6">
                             
                                 <label for="">Pilih Customer: *</label>
-                                    <select name="arr_customer[]" id="customer" class="form-control mb_15">
+                                    <select name="arr_customer[]" id="customer" class="form-control mb_15" onchange="getCustomer()">
                                         <option value="">== Select Customer ==</option>
                                         @php $a=0; @endphp
                                         @foreach($all_customer as $name)
-                                        <option value="value="{{ $name->id }}"> {{$name->name}}</option>
+                                        <option value="{{ $name->id }}"> {{$name->name}}</option>
                                         @endforeach
                                     </select>
                        
                                 <label for="">Name: *</label>
-                                <input type="text" class="form-control mb_15" name="name">
+                                <input type="text" class="form-control mb_15" id="name" name="name">
                           
                                 <label for="">Email Address: *</label>
-                                <input type="text" class="form-control mb_15" name="email">
-                            
+                                <input type="text" class="form-control mb_15" id="email" name="email">
                             
                                 <label for="">Phone Number: *</label>
-                                <input type="text" class="form-control mb_15" name="phone">
+                                <input type="text" class="form-control mb_15" id="phone" name="phone">
                            
                                 <label for="">Country: *</label>
                                 <input type="text" class="form-control mb_15" name="country">
@@ -68,21 +67,21 @@
                             
                             <div class="col-lg-6">
                             <h4 class="mb_30">Data Room</h4>
-                                <label cfor="">Date Check-in: *</label>
+                                <label for="">Date Check-in: *</label>
                                 <input type="date" class="form-control mb_15" name="checkin" >
                             
                             
-                                    <label class="form-label">Date Check-out *</label>
+                                    <label for="">Date Check-out *</label>
                                     <input type="date" class="form-control mb_15" name="checkout" >
         
                                     
                             <label for="">Select Room</label>
                                 
-                                    <select name="arr_room[]" id="room" class="form-control mb_15">
+                                    <select name="arr_room[]" id="room" class="form-control mb_15" onchange="getPrice()">
                                         <option value="">== Select Room ==</option>
                                         @php $i=0; @endphp
                                         @foreach($all_room as $item)
-                                        <option value="value="{{ $item->id }}"> {{$item->name}}</option>
+                                        <option value="{{ $item->id }}"> {{$item->name}}</option>
                                         @endforeach
                                     </select>
 
@@ -102,7 +101,12 @@
                            
                             <div class="col-lg-6">
                             <h4 class="mb_30">Price</h4>
-                            </div>
+                            <label for="">Price Room: </label>
+                            <input type="text" class="form-control mb_15" id="price" name="price" >
+                            
+                            
+                            <label for="">Price Total: </label>
+                            <input type="text" class="form-control mb_15" id="price" name="price" >
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary bg-website mb_30">Continue to payment</button>
@@ -117,4 +121,23 @@
         </div>
     </div>
 </div>
+<script>
+    function getCustomer() {
+        var customer =  document.getElementById("customer").value;
+        fetch('/admin/order/get_customer?id='+customer)
+        .then(res=>res.json()).then(data=>{
+            document.getElementById("name").value=data.result['name'];
+            document.getElementById("email").value=data.result['email'];
+            document.getElementById("phone").value=data.result['phone'];
+        })
+    }
+
+    function getPrice() {
+        var room = document.getElementById("room").value;
+        fetch('/admin/order/get_room?id='+room)
+        .then(res=>res.json()).then(data=>{
+            document.getElementById("price").value=data.result['price'];
+        })
+    }
+</script>
 @endsection

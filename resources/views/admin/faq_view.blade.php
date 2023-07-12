@@ -16,7 +16,7 @@
                         <table class="table table-bordered" id="example1">
                             <thead>
                                 <tr>
-                                    <th>SL</th>
+                                    <th>No</th>
                                     <th>Question</th>
                                     <th>Action</th>
                                 </tr>

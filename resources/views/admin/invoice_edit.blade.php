@@ -120,8 +120,8 @@
                         <div class="text-center">
                             <h5>Bukti Pembayaran sudah di kirim nomor order id #{{ $order->order_no }}</h5>
                         </div>
-                        <div class="text-center">
-                            <img src="{{ asset('storage/' . $order->bukti_pembayaran) }}" alt=""
+                        <div class="text-center mx-auto" style="width:30%">
+                            <img src="{{ asset('storage/' . $order->bukti_pembayaran) }}" alt="gambar"
                                 class="img-fluid img-thumbnail rounded mx-auto d-block" />
                         </div>
                     </div>

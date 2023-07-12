@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('heading', 'Add Feature')
+@section('heading', 'Add Customer')
 
 @section('right_top_button')
 <a href="{{ route('admin_customer') }}" class="btn btn-primary"><i class="fa fa-eye"></i> Back</a>

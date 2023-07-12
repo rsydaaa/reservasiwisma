@@ -16,8 +16,8 @@
                         <table class="table table-bordered" id="">
                             <thead>
                                 <tr>
-                                    <th>SL</th>
-                                    <th>Room Name</th>
+                                    <th>No</th>
+                                    <th>Homestay</th>
                                     <th>Total Rooms</th>
                                     <th>Booked Rooms</th>
                                     <th>Available Rooms</th>

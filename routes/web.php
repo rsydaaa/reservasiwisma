@@ -32,7 +32,7 @@ use App\Http\Controllers\Admin\AdminAmenityController;
 use App\Http\Controllers\Admin\AdminRoomController;
 use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminDatewiseRoomController;
-use App\Http\Controllers\Admin\AdminPromoController;
+
 
 
 use App\Http\Controllers\Customer\CustomerHomeController;
@@ -125,6 +125,8 @@ Route::group(['middleware' =>['admin:admin']], function(){
 
     Route::get('/admin/order/view', [AdminOrderController::class, 'index'])->name('admin_orders');
     Route::get('/admin/order/add', [AdminOrderController::class, 'add'])->name('admin_order_add');
+    Route::get('/admin/order/get_customer', [AdminOrderController::class, 'getCustomer'])->name('get_customer');
+    Route::get('/admin/order/get_room', [AdminOrderController::class, 'getRoom'])->name('get_room');
     Route::post('/admin/order/store', [AdminOrderController::class, 'store'])->name('admin_order_store');
     Route::get('/admin/order/invoice/{id}', [AdminOrderController::class, 'invoice'])->name('admin_invoice');
     Route::get('/admin/order/invoice/edit/{id}', [AdminOrderController::class, 'invoice_edit'])->name('admin_invoice_edit');
@@ -255,11 +257,10 @@ Route::group(['middleware' =>['admin:admin']], function(){
     Route::post('/admin/room/gallery/store/{id}', [AdminRoomController::class, 'gallery_store'])->name('admin_room_gallery_store');
     Route::get('/admin/room/gallery/delete/{id}', [AdminRoomController::class, 'gallery_delete'])->name('admin_room_gallery_delete');
 
-    Route::get('/admin/fasilitas/view', [AdminFasilitasController::class, 'index'])->name('admin_fasilitas_view');
+   
+    
 
-    Route::get('/admin/promo/view', [AdminPromoController::class, 'index'])->name('admin_promo');
-    Route::get('/admin/promo/add', [AdminPromoController::class, 'add'])->name('admin_promo_add');
-    Route::post('/admin/promo/store', [AdminPromoController::class, 'store'])->name('admin_promo_store');
-    Route::get('/admin/promo/delete/{id}', [AdminPromoController::class, 'delete'])->name('admin_promo_delete');
+
+  
 });
 

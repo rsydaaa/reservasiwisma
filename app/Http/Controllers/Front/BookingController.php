@@ -302,9 +302,9 @@ class BookingController extends Controller
         //update data
         $order = Order::where('order_no', $order_no)->where('customer_id', Auth::guard('customer')->user()->id)->first();
         if($request->file('bukti_pembayaran')){
-            $file = $request->file('bukti_pembayaran')->store('bukti_pembayaran','public');
-            $order->bukti_pembayaran = $file;
-            $order->status = 'Pending';
+           $fileName = 'bukti_pembayaran'.mt_rand(1111,9999).'.jpg';
+            $order->status = 'Pending'; $file = $request->file('bukti_pembayaran')->move(public_path('storage'), $fileName);
+            $order->bukti_pembayaran = $fileName;
             $order->save();
             //redirect
             return redirect()->route('transaksi')->with('success', 'Bukti Pembayaran Berhasil Diupload');

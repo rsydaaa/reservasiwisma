@@ -27,24 +27,7 @@
                                                 <input type="file" name="logo">
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
                                         <div class="mb-4">
-                                            <label class="form-label">Existing Favicon</label>
-                                            <div>
-                                                <img src="{{ asset('uploads/'.$setting_data->favicon) }}" alt="" class="w_50">
-                                            </div>
-                                        </div>
-                                        <div class="mb-4">
-                                            <label class="form-label">Change Favicon</label>
-                                            <div>
-                                                <input type="file" name="favicon">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                                                
-                                <div class="mb-4">
                                     <label class="form-label">Top Bar Phone</label>
                                     <input type="text" class="form-control" name="top_bar_phone" value="{{ $setting_data->top_bar_phone }}">
                                 </div>
@@ -103,7 +86,21 @@
                                     <textarea name="footer_address" class="form-control h_100" cols="30" rows="10">{{ $setting_data->footer_address }}</textarea>
                                 </div>
 
-                                <div class="mb-4">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-4">
+                                            <label class="form-label">Existing Favicon</label>
+                                            <div>
+                                                <img src="{{ asset('uploads/'.$setting_data->favicon) }}" alt="" class="w_50">
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="form-label">Change Favicon</label>
+                                            <div>
+                                                <input type="file" name="favicon">
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
                                     <label class="form-label">Footer Phone</label>
                                     <input type="text" class="form-control" name="footer_phone" value="{{ $setting_data->footer_phone }}">
                                 </div>
@@ -152,7 +149,8 @@
                                     <label class="form-label">Theme Color 2</label>
                                     <input type="text" class="form-control" name="theme_color_2" value="{{ $setting_data->theme_color_2 }}">
                                 </div>
-
+                                    </div>
+                                </div> 
                                 <div class="mb-4">
                                     <label class="form-label"></label>
                                     <button type="submit" class="btn btn-primary">Update</button>

@@ -2,9 +2,7 @@
 
 @section('heading', 'Customer Orders')
 
-@section('right_top_button')
-<a href="{{ route('admin_order_add') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Add New</a>
-@endsection
+
 
 
 @section('main_content')
@@ -17,7 +15,7 @@
                             <table class="table table-bordered" id="example1">
                                 <thead>
                                     <tr>
-                                        <th>SL</th>
+                                        <th>No</th>
                                         <th>Order No</th>
                                         <th>Payment Method</th>
                                         <th>Payment Status</th>
@@ -34,7 +32,7 @@
                                             <td>{{ $row->payment_method }}</td>
                                             <td>
                                                 @if ($row->status == 'Pending')
-                                                    <span class="badge badge-warning">Pending</span>
+                                                    <span class="badge badge-danger"> Pending  </span>
                                                 @elseif($row->status == 'Completed')
                                                     <span class="badge badge-success">Completed</span>
                                                 @elseif($row->status == 'Cancel')

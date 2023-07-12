@@ -27,6 +27,20 @@ class AdminOrderController extends Controller
         return view('admin.order_add',compact('all_order','all_customer','all_room'));
     }
 
+    public function getCustomer(Request $request){
+        $customer = Customer::where('id',$request->id)->first();
+        return [
+            'result' => $customer
+        ];
+    }
+
+    public function getRoom(Request $request){
+        $room = Room::where('id',$request->id)->first();
+        return [
+            'result' => $room
+        ];
+    }
+
     public function store(Request $request)
     {
         $room = '';

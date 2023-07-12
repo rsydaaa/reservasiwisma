@@ -13,20 +13,29 @@
 
             <li class="{{ Request::is('admin/setting') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_setting') }}" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Setting"><i class="fa fa-cog"></i> <span>Setting</span></a></li>
 
-            <li class="nav-item dropdown {{ Request::is('admin/amenity/view')||Request::is('admin/room/view')||Request::is('admin/fasilitas/view')||Request::is('admin//view') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ Request::is('admin/amenity/view')||Request::is('admin/room/view')||Request::is('admin//view') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fa fa-superpowers"></i><span>Room Section</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/room/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_room_view') }}"><i class="fa fa-angle-right"></i> Data Wisma</a></li>
-                    <li class="{{ Request::is('admin/Fasilitas/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_fasilitas_view') }}"><i class="fa fa-angle-right"></i> Data Fasilitas</a></li>
+                    
                     <li class="{{ Request::is('admin/amenity/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_amenity_view') }}"><i class="fa fa-angle-right"></i> Amenities</a></li>
                 </ul>
             </li>
 
-            <li class="nav-item dropdown {{Request::is('admin/customer/view') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{Request::is('admin/customer/view')||Request::is('admin/subscriber/show')||Request::is('admin/subscriber/send-email') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fa fa-superpowers"></i><span>User</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/customers') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_customer') }}" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Customers"><i class="fa fa-user-plus"></i> <span>Customer</span></a></li>
-                 </ul>    
+                    
+                       
+                        
+
+                         <li class="{{ Request::is('admin/subscriber/show') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_subscriber_show') }}"><i class="fa fa-users"></i> All Subscribers</a></li>
+
+                         <li class="{{ Request::is('admin/subscriber/send-email') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_subscriber_send_email') }}"><i class="fa fa-envelope"></i> Send Email</a></li>
+                        
+            
+                </ul>    
             </li>
 
 
@@ -72,20 +81,12 @@
                 </ul>
             </li>
 
-            <li class="nav-item dropdown {{ Request::is('admin/subscriber/show')||Request::is('admin/subscriber/send-email') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown"><i class="fa fa-users"></i><span>Subscribers</span></a>
-                <ul class="dropdown-menu">
-
-                    <li class="{{ Request::is('admin/subscriber/show') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_subscriber_show') }}"><i class="fa fa-angle-right"></i> All Subscribers</a></li>
-
-                    <li class="{{ Request::is('admin/subscriber/send-email') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_subscriber_send_email') }}"><i class="fa fa-angle-right"></i> Send Email</a></li>
-                </ul>
-            </li>
+           
 
 
             <li class="{{ Request::is('admin/order/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_orders') }}" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Orders"><i class="fa fa-cart-plus"></i> <span>Orders</span></a></li>
 
-            <li class="{{ Request::is('admin/promo/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_promo') }}" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Promo"><i class="fa fa-tags"></i> <span>Promo</span></a></li>
+           
 
             <li class="{{ Request::is('admin/slide/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_slide_view') }}" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Slide"><i class="fa fa-cubes"></i> <span>Slide</span></a></li>
 
